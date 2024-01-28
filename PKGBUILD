@@ -6,7 +6,7 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 
 _py="python"
-_pkg="${_name}"
+_pkg="toml"
 pkgname="${_py}-${_pkg}"
 pkgver=0.10.2
 pkgrel=9
