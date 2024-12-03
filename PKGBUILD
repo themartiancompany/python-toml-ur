@@ -6,7 +6,16 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 
 _py="python"
-_pkg="toml"
+_pyver="$( \
+  "${_py}" \
+    -V | \
+    awk \
+      '{print $2}')"
+_pymajver="${_pyver%.*}"
+_pyminver="${_pymajver#*.}"
+_pynextver="${_pymajver%.*}.$(( \
+  ${_pyminver} + 1))"
+_pkg=toml
 pkgname="${_py}-${_pkg}"
 pkgver=0.10.2
 pkgrel=9
@@ -21,7 +30,8 @@ license=(
   'MIT'
 )
 depends=(
-  "${_py}"
+  "${_py}>=${_pymajver}"
+  "${_py}<${_pynextver}"
 )
 makedepends=(
   "${_py}-build"
